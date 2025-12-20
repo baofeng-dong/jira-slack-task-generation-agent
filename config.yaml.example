@@ -1,0 +1,40 @@
+# Jira Configuration
+jira:
+  url: "https://your-instance.atlassian.net"
+  project_key: "YOUR_PROJECT_KEY"
+  # Default values - the AI will override these based on message content
+  default_issue_type: "Task"
+  default_priority: "Medium"
+  # Optional: Set initial status for new tickets (leave empty to use workflow default)
+  initial_status: "To Do"
+
+# Slack Configuration
+slack:
+  # Channels to monitor for bugs/tasks (without the # symbol)
+  monitored_channels:
+    - "your-channel-name"
+
+  # Channel to post notifications when tickets are created
+  notification_channel: "bug-task-notifications"
+
+  # App configuration
+  app_port: 3000  # Port for Slack events API
+
+# AI Detection Configuration
+ai:
+  model: "claude-sonnet-4-5-20250929"  # Claude model to use
+
+  # Detection sensitivity: "liberal" or "conservative"
+  # liberal: Create tickets for anything that might be a bug/task
+  # conservative: Only create tickets when very confident
+  detection_mode: "liberal"
+
+  # Minimum confidence threshold (0.0 to 1.0)
+  # For liberal mode, recommend 0.3-0.5
+  # For conservative mode, recommend 0.7-0.9
+  confidence_threshold: 0.4
+
+# Logging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  file: "agent.log"
