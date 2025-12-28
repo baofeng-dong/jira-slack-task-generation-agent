@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  jira-slack-agent:
+    build: .
+    container_name: jira-slack-agent
+    restart: unless-stopped
+
+    # Environment variables - configure these in .env file
+    env_file:
+      - .env
+
+    # Mount config file (optional: customize without rebuilding)
+    volumes:
+      - ./config.yaml:/app/config.yaml:ro
+      - ./logs:/app/logs
+
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+    # Health check
+    healthcheck:
+      test: ["CMD", "python", "-c", "import os; exit(0 if os.path.exists('/app/agent.log') else 1)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+# Optional: Use pre-built image from Docker Hub instead of building
+# Uncomment the lines below and comment out the 'build: .' line above
+#
+# services:
+#   jira-slack-agent:
+#     image: YOUR_DOCKERHUB_USERNAME/jira-slack-agent:latest
+#     # ... rest of configuration same as above

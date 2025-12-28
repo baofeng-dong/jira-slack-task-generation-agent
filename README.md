@@ -1,6 +1,38 @@
 # Jira-Slack AI Agent
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
+[![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](https://www.docker.com/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 An intelligent agent that monitors Slack channels for bug reports and task requests, uses Claude AI to detect and classify them, then automatically creates Jira tickets and sends notifications.
+
+## Quick Start with Docker
+
+The fastest way to get started:
+
+```bash
+# Clone the repository
+git clone https://github.com/YOUR_USERNAME/jira-slack-agent.git
+cd jira-slack-agent
+
+# Configure your credentials
+cp .env.example .env
+cp config.yaml.example config.yaml
+# Edit .env and config.yaml with your API keys and settings
+
+# Start the agent
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+```
+
+That's it! See [DOCKER.md](DOCKER.md) for detailed Docker deployment instructions.
+
+## Alternative: Manual Installation
+
+If you prefer not to use Docker, see the [Manual Setup Instructions](#manual-setup-instructions) below.
 
 ## Features
 
@@ -24,8 +56,9 @@ Slack Message → Claude AI Analysis → Jira Ticket Creation → Slack Notifica
 - A Slack workspace where you can create apps
 - Jira access with ticket creation permissions
 - Anthropic API access
+- Docker and Docker Compose (for Docker deployment)
 
-## Setup Instructions
+## Manual Setup Instructions
 
 ### 1. Clone and Install Dependencies
 
@@ -410,10 +443,26 @@ jira-slack-agent/
 ├── config.yaml           # Configuration file
 ├── .env                  # Environment variables (not in git)
 ├── .env.example          # Template for .env
+├── config.yaml.example   # Template for config
 ├── requirements.txt      # Python dependencies
+├── Dockerfile            # Docker image definition
+├── docker-compose.yml    # Docker Compose configuration
+├── .dockerignore         # Docker ignore file
 ├── README.md             # This file
+├── DOCKER.md             # Docker deployment guide
+├── CONTRIBUTING.md       # Contribution guidelines
+├── CHANGELOG.md          # Version history
+├── LICENSE               # MIT License
 └── agent.log             # Log file (created at runtime)
 ```
+
+## Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on:
+- Reporting bugs
+- Suggesting enhancements
+- Submitting pull requests
+- Development setup
 
 ## Security Notes
 
@@ -426,11 +475,12 @@ jira-slack-agent/
 ## Support
 
 For issues or questions:
-1. Check the Troubleshooting section above
-2. Review logs in `agent.log`
-3. Verify all API credentials are correct
-4. Test each integration individually (Slack, Jira, Claude)
+1. Check the [Troubleshooting](#troubleshooting) section above
+2. Review the [DOCKER.md](DOCKER.md) guide for Docker-specific issues
+3. Review logs in `agent.log` or `docker logs -f jira-slack-agent`
+4. Check [existing issues](https://github.com/YOUR_USERNAME/jira-slack-agent/issues) on GitHub
+5. Open a [new issue](https://github.com/YOUR_USERNAME/jira-slack-agent/issues/new) if your problem isn't already reported
 
 ## License
 
-MIT License - Feel free to use and modify for your own purposes.
+MIT License - Feel free to use and modify for your own purposes. See [LICENSE](LICENSE) for details.

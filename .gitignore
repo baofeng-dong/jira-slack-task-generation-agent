@@ -7,6 +7,7 @@ config.yaml
 # Log files
 *.log
 agent.log
+logs/
 
 # Python virtual environment
 env/
