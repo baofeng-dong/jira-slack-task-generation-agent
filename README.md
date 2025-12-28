@@ -13,7 +13,7 @@ The fastest way to get started:
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/jira-slack-agent.git
+git clone https://github.com/baofeng-dong/jira-slack-task-generation-agent.git
 cd jira-slack-agent
 
 # Configure your credentials
@@ -478,8 +478,8 @@ For issues or questions:
 1. Check the [Troubleshooting](#troubleshooting) section above
 2. Review the [DOCKER.md](DOCKER.md) guide for Docker-specific issues
 3. Review logs in `agent.log` or `docker logs -f jira-slack-agent`
-4. Check [existing issues](https://github.com/YOUR_USERNAME/jira-slack-agent/issues) on GitHub
-5. Open a [new issue](https://github.com/YOUR_USERNAME/jira-slack-agent/issues/new) if your problem isn't already reported
+4. Check [existing issues](https://github.com/baofeng-dong/jira-slack-task-generation-agent/issues) on GitHub
+5. Open a [new issue](https://github.com/baofeng-dong/jira-slack-task-generation-agent/issues/new) if your problem isn't already reported
 
 ## License
 

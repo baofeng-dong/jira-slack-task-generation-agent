@@ -8,7 +8,7 @@ This guide covers deploying the Jira-Slack AI Agent using Docker.
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/jira-slack-agent.git
+   git clone https://github.com/baofeng-dong/jira-slack-task-generation-agent.git
    cd jira-slack-agent
    ```
 
@@ -204,7 +204,7 @@ docker rm jira-slack-agent
 
 3. **Clone and configure**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/jira-slack-agent.git
+   git clone https://github.com/baofeng-dong/jira-slack-task-generation-agent.git
    cd jira-slack-agent
    cp .env.example .env
    cp config.yaml.example config.yaml
