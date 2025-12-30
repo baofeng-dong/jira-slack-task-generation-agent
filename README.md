@@ -3,18 +3,49 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
 [![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](https://www.docker.com/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/baofengdong/jira-slack-agent)](https://hub.docker.com/r/baofengdong/jira-slack-agent)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 An intelligent agent that monitors Slack channels for bug reports and task requests, uses Claude AI to detect and classify them, then automatically creates Jira tickets and sends notifications.
 
 ## Quick Start with Docker
 
-The fastest way to get started:
+### Option 1: Using Pre-built Docker Image (Fastest)
+
+```bash
+# Pull the image
+docker pull baofengdong/jira-slack-agent:latest
+
+# Create configuration files
+mkdir jira-slack-agent && cd jira-slack-agent
+curl -O https://raw.githubusercontent.com/baofeng-dong/jira-slack-task-generation-agent/main/.env.example
+curl -O https://raw.githubusercontent.com/baofeng-dong/jira-slack-task-generation-agent/main/config.yaml.example
+mv .env.example .env
+mv config.yaml.example config.yaml
+
+# Edit .env and config.yaml with your API keys and settings
+nano .env
+nano config.yaml
+
+# Run the agent
+docker run -d \
+  --name jira-slack-agent \
+  --restart unless-stopped \
+  --env-file .env \
+  -v $(pwd)/config.yaml:/app/config.yaml:ro \
+  -v $(pwd)/logs:/app/logs \
+  baofengdong/jira-slack-agent:latest
+
+# View logs
+docker logs -f jira-slack-agent
+```
+
+### Option 2: Build from Source
 
 ```bash
 # Clone the repository
 git clone https://github.com/baofeng-dong/jira-slack-task-generation-agent.git
-cd jira-slack-agent
+cd jira-slack-task-generation-agent
 
 # Configure your credentials
 cp .env.example .env
@@ -28,7 +59,7 @@ docker-compose up -d
 docker-compose logs -f
 ```
 
-That's it! See [DOCKER.md](DOCKER.md) for detailed Docker deployment instructions.
+See [DOCKER.md](DOCKER.md) for detailed Docker deployment instructions.
 
 ## Alternative: Manual Installation
 

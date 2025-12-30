@@ -2,7 +2,12 @@ version: '3.8'
 
 services:
   jira-slack-agent:
-    build: .
+    # Use pre-built image from Docker Hub (recommended)
+    image: baofengdong/jira-slack-agent:latest
+
+    # Alternative: Build from source (uncomment line below and comment out 'image:' line above)
+    # build: .
+
     container_name: jira-slack-agent
     restart: unless-stopped
 
@@ -29,11 +34,3 @@ services:
       timeout: 10s
       retries: 3
       start_period: 10s
-
-# Optional: Use pre-built image from Docker Hub instead of building
-# Uncomment the lines below and comment out the 'build: .' line above
-#
-# services:
-#   jira-slack-agent:
-#     image: YOUR_DOCKERHUB_USERNAME/jira-slack-agent:latest
-#     # ... rest of configuration same as above
